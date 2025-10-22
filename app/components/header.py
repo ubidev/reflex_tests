@@ -7,8 +7,8 @@ def nav_item(item: dict) -> rx.Component:
     return rx.el.a(
         item["name"],
         on_click=[
-            lambda: State.set_active_nav_item(item["name"]),
-            lambda: State.scroll_to(item["href"]),
+            lambda: State.set_active_nav_item(item["name"]),  # pylint: disable=no-value-for-parameter  # Reflex @rx.event wraps instance methods at runtime
+            lambda: State.scroll_to(item["href"]),  # pylint: disable=no-value-for-parameter  # Reflex @rx.event wraps instance methods at runtime
         ],
         class_name=rx.cond(
             State.active_nav_item == item["name"],
@@ -24,9 +24,9 @@ def mobile_nav_item(item: dict) -> rx.Component:
     return rx.el.a(
         item["name"],
         on_click=[
-            lambda: State.set_active_nav_item(item["name"]),
-            lambda: State.scroll_to(item["href"]),
-            State.toggle_mobile_menu,
+            lambda: State.set_active_nav_item(item["name"]),  # pylint: disable=no-value-for-parameter  # Reflex @rx.event wraps instance methods at runtime
+            lambda: State.scroll_to(item["href"]),  # pylint: disable=no-value-for-parameter  # Reflex @rx.event wraps instance methods at runtime
+            State.toggle_mobile_menu,  # pylint: disable=no-value-for-parameter  # Reflex @rx.event wraps instance methods at runtime
         ],
         class_name="block px-4 py-3 text-base font-medium text-gray-200 hover:bg-purple-700 hover:text-white rounded-md transition-colors duration-200",
         cursor="pointer",
@@ -45,7 +45,7 @@ def header() -> rx.Component:
                         "TechConsult", class_name="text-xl font-bold text-white"
                     ),
                     href="#home",
-                    on_click=lambda: State.set_active_nav_item("Home"),
+                    on_click=lambda: State.set_active_nav_item("Home"),  # pylint: disable=no-value-for-parameter  # Reflex @rx.event wraps instance methods at runtime
                     class_name="flex items-center gap-2 cursor-pointer",
                 ),
                 rx.el.div(
@@ -58,7 +58,7 @@ def header() -> rx.Component:
                             tag=rx.cond(State.mobile_menu_open, "x", "menu"),
                             class_name="h-6 w-6 stroke-white",
                         ),
-                        on_click=State.toggle_mobile_menu,
+                        on_click=State.toggle_mobile_menu,  # pylint: disable=no-value-for-parameter  # Reflex @rx.event wraps instance methods at runtime
                         class_name="p-2 rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-white transition-all duration-200",
                     ),
                     class_name="md:hidden flex items-center",

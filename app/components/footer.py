@@ -16,7 +16,7 @@ def footer_link_group(title: str, links: list[dict]) -> rx.Component:
                     rx.el.a(
                         link["name"],
                         href=link["href"],
-                        on_click=lambda: State.scroll_to(link["href"]),
+                        on_click=lambda: State.scroll_to(link["href"]),  # pylint: disable=no-value-for-parameter  # Reflex @rx.event wraps instance methods at runtime
                         class_name="text-base text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer",
                     ),
                     class_name="mt-4",

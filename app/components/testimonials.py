@@ -60,7 +60,7 @@ def testimonials_section() -> rx.Component:
                 rx.foreach(
                     TestimonialState.testimonials,
                     lambda _, i: rx.el.button(
-                        on_click=lambda: TestimonialState.set_testimonial(i),
+                        on_click=lambda: TestimonialState.set_testimonial(i),  # pylint: disable=no-value-for-parameter  # Reflex @rx.event wraps instance methods at runtime
                         class_name=rx.cond(
                             TestimonialState.current_testimonial_index == i,
                             "w-3 h-3 bg-purple-600 rounded-full transition-all duration-300",
