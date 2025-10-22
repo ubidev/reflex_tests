@@ -1,0 +1,12 @@
+[project]
+name = "reflex-tests"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "reflex>=0.8.16",
+]

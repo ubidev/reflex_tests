@@ -1,0 +1,31 @@
+  {
+    "version": "0.2.0",
+    "configurations": [
+    {
+      "name": "Reflex: Run Dev",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "reflex",
+      "args": ["run"],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Reflex: Run Prod",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "reflex",
+      "args": ["run", "--env", "prod"],
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "Python: Current File",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    }
+  ]
+}

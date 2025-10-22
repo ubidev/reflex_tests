@@ -1,10 +1,13 @@
+"""Components for the services section of the landing page."""
 import reflex as rx
 from app.state import State
 
 
 def service_card(service: dict) -> rx.Component:
     """A card for a single service."""
-    return rx.el.div(
+    # un lien complet autour de la carte, comme défini actuellement
+    # fonctionne mais empêche la sélection de texte à l'intérieur de la carte
+    return rx.el.a(
         rx.el.div(
             rx.icon(service["icon"], class_name="h-10 w-10 stroke-purple-600"),
             class_name="mb-4 flex justify-center items-center h-16 w-16 rounded-full bg-purple-100",
@@ -17,7 +20,10 @@ def service_card(service: dict) -> rx.Component:
             service["description"],
             class_name="text-base font-medium text-gray-600 font-['Roboto']",
         ),
-        class_name="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300 ease-in-out border border-gray-100 flex flex-col items-start text-left",
+        href=service["url"],
+        class_name="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg hover:bg-purple-50 " \
+                   "transition-all duration-300 ease-in-out border " \
+                   "border-gray-100 flex flex-col items-start text-left",
     )
 
 
@@ -27,11 +33,13 @@ def services_section() -> rx.Component:
         rx.el.div(
             rx.el.h2(
                 "Our Services",
-                class_name="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-4 font-['Roboto']",
+                class_name="text-3xl md:text-4xl font-bold " \
+                "text-gray-900 text-center mb-4 font-['Roboto']",
             ),
             rx.el.p(
                 "We offer a comprehensive suite of technology services to meet your needs.",
-                class_name="text-lg text-gray-600 text-center max-w-2xl mx-auto mb-12 font-medium font-['Roboto']",
+                class_name="text-lg text-gray-600 text-center " \
+                "max-w-2xl mx-auto mb-12 font-medium font-['Roboto']",
             ),
             rx.el.div(
                 rx.foreach(State.services, service_card),
@@ -54,7 +62,8 @@ def value_prop_section() -> rx.Component:
                     class_name="text-3xl font-bold text-white mb-4 tracking-tight",
                 ),
                 rx.el.p(
-                    "We are not just another tech company. We are your partners in innovation and success. Our commitment to excellence sets us apart.",
+                    """We are not just another tech company. We are your partners in 
+innovation and success. Our commitment to excellence sets us apart.""",
                     class_name="text-lg text-purple-200 max-w-3xl",
                 ),
                 class_name="mb-10 text-center",

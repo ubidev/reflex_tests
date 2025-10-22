@@ -39,6 +39,7 @@ def header() -> rx.Component:
         rx.el.div(
             rx.el.div(
                 rx.el.a(
+                    rx.color_mode.button(),
                     rx.icon("zap", class_name="h-6 w-6 stroke-white"),
                     rx.el.span(
                         "TechConsult", class_name="text-xl font-bold text-white"
